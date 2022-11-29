@@ -18,4 +18,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('/goldar', App\Http\Controllers\Api\GolonganDarahController::class);
+Route::apiResource('/bloodtypes', App\Http\Controllers\Api\BloodTypeController::class);
+Route::apiResource('/populations', App\Http\Controllers\Api\PopulationController::class);

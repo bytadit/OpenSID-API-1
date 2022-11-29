@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class GolonganDarahResource extends JsonResource
+class BloodTypeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -12,7 +12,7 @@ class GolonganDarahResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
-
+    //define properti
     public $status;
     public $message;
 
@@ -37,13 +37,7 @@ class GolonganDarahResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-
-    // public function toArray($request)
-    // {
-    //     return parent::toArray($request);
-    // }
-
-    public function toArray($request)
+     public function toArray($request)
     {
         return [
             'success'   => $this->status,
