@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Dusun extends Model
 {
     use HasFactory;
+
+    public function populations()
+    {
+        return $this->hasMany(Population::class);
+    }
 }

@@ -19,9 +19,11 @@ class PopulationController extends Controller
     //  */
     public function index()
     {
-        $population = Population::leftJoin('dusuns', 'populations.dusun_id', '=', 'dusuns.id')
+        $population = DB::table('populations')
+                        ->leftJoin('dusuns', 'populations.dusun_id', '=', 'dusuns.id')
                         ->leftJoin('sexes', 'populations.sex_id', '=', 'sexes.id')
-                        ->select(['dusuns.id as DusunID', 'dusuns.name as DusunName',
+                        ->select(['dusuns.id as DusunID', 'dusuns.name as DusunName', 'dusuns.rt as RT', 'dusuns.rw as RW',
+                                    DB::raw("COUNT(DISTINCT populations.kk_id) as 'Jumlah_KK'"),
                                     DB::raw("COUNT(CASE WHEN sexes.name = 'Pria' THEN 1 END) as Pria"),
                                     DB::raw("COUNT(CASE WHEN sexes.name = 'Wanita' THEN 1 END) as Wanita"),
                                     DB::raw("COUNT(*) AS Total_PW")

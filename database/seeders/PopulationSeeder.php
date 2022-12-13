@@ -20,12 +20,14 @@ class PopulationSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create('id_ID');
-        for($i=1; $i <= 500; $i++){
+        for($i=1; $i <= 1000; $i++){
             DB::table('populations')->insert([
                 'name' => $faker->name,
                 'nik' => $faker->unique()->numerify('################'),
-                'dusun_id'=>$faker->randomElement([1, 2, 3, 4]),
+                'kk_id' => $faker->numberBetween(1, 200),
+                'dusun_id'=>$faker->numberBetween(1, 20),
                 'sex_id'=>$faker->randomElement([1, 2]),
+                'tanggal_lahir'=>$faker->date,
                 'citizen_id'=>$faker->randomElement([1, 2, 3]),
                 'blood_type_id'=>$faker->randomElement([1, 2, 3, 4]),
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),

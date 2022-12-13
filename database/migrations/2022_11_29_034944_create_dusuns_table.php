@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('dusuns', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->foreignId('kecamatan_id');
+            $table->string('rt');
+            $table->string('rw');
             $table->timestamps();
         });
     }

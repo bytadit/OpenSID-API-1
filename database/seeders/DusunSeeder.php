@@ -5,6 +5,10 @@ use App\Models\Dusun;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+use Faker\Factory as Faker;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
+
 class DusunSeeder extends Seeder
 {
     /**
@@ -12,28 +16,18 @@ class DusunSeeder extends Seeder
      *
      * @return void
      */
-    protected $dusuns = [
-        [
-            'id' => 1,
-            'name' => 'Siji'
-        ],
-        [
-            'id' => 2,
-            'name' => 'Loro'
-        ],
-        [
-            'id' => 3,
-            'name' => 'Telu'
-        ],
-        [
-            'id' => 4,
-            'name' => 'Papat'
-        ]
-    ];
-     public function run()
+    public function run()
     {
-        foreach($this->dusuns as $dusun){
-            Dusun::create($dusun);
+        $faker = Faker::create('id_ID');
+        for($i=1; $i <= 20; $i++){
+            DB::table('dusuns')->insert([
+                'name' => $faker->street,
+                'kecamatan_id' => $faker->numberBetween(1, 4),
+                'rt' => $faker->numberBetween(1, 9),
+                'rw'=>$faker->numberBetween(1, 5),
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ]);
         }
     }
 }
